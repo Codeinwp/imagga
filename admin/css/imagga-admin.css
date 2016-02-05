@@ -1,0 +1,55 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+
+.imagga-settings{
+  background-color: #FFF;
+  padding: 10px;
+  max-width: 700px;
+}
+
+.imagga-logo img{
+  width:110px;
+}
+
+.response_box{
+  padding: 10px;
+  border-left: 4px solid #46b450;
+  -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+  display: block;
+  clear: both;
+  margin-bottom: 5px;
+}
+
+.imagga_error{
+  border-left-color: #ff0000;
+}
+
+.imagga-footer{
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+}
+
+.imagga-footer a{
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.imagga-submit{
+  border: 2px solid;
+  border-color: #1cbda2;
+  border-radius: 4px;
+  background: #1cbda2;
+  box-shadow: none;
+  font-size: 13px;
+  line-height: 1;
+  font-weight: 400;
+  padding: 0.7em 1.5em 0.7em;
+  text-shadow: none;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 10px;
+}
