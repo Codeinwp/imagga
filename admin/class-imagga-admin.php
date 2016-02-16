@@ -115,6 +115,9 @@ class Imagga_Admin {
 									  CURLOPT_ENCODING => "",
 									  CURLOPT_MAXREDIRS => 10,
 									  CURLOPT_TIMEOUT => 30,
+									  CURLOPT_RETURNTRANSFER => 1,
+									  CURLOPT_VERBOSE => 1,
+									  CURLOPT_HEADER => 1,
 									  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 									  CURLOPT_CUSTOMREQUEST => "GET",
 									  CURLOPT_HTTPHEADER => array(
@@ -124,7 +127,27 @@ class Imagga_Admin {
 									));
 
 									$response = curl_exec($curl);
+									$header_size = curl_getinfo($curl, CURLINFO_HEADER_SIZE);
+									$header = substr($response, 0, $header_size);
+									$rows = explode("\n", $header);
+									foreach($rows as $row => $data){
+										$row_data = explode(':', $data);
+										if($row_data[0]=="Monthly-Limit"){
+											$limit = intval( $row_data[1] );
+										}
+										if($row_data[0]=="Monthly-Limit-Remaining"){
+											$remaining = intval( $row_data[1] );
+										}
+									}
 
+									if( !empty( $limit ) ){
+										update_option( 'imagga_limit', $limit );
+									}
+
+									if( !empty( $remaining ) ){
+										update_option( 'imagga_remaining', $remaining );
+									}
+									
 									$err = curl_error($curl);
 
 									curl_close($curl);
@@ -154,17 +177,29 @@ class Imagga_Admin {
 							$confidence = get_option('imagga-confidence');
 							if( empty($confidence) ){
 								$confidence = 50;
-							}
-						?>
+							} ?>
+						<?php 
+							$limit = get_option('imagga_limit');
+							$remaining = get_option('imagga_remaining'); 
+							if( !empty( $limit ) && !empty( $remaining )  ) { ?>
+								<div class="large-8 columns">
+									<p class="api-info"> Monthly <br>
+										<span>USAGE / LIMIT | <a href="https://imagga.com/profile/payments">Upgrade for more</a></span> 
+									</p>
+									<p class="usage"><strong><?php echo $limit - $remaining; ?></strong> / <?php echo $limit; ?></p>
+									<span class="tagging-color"></span>
+								</div>
+						<?php 
+							}?>
 						<form method="post">
 							<table class="imagga-settings">
 		      			<tbody>
 									<tr>
-		          			<td valign="top"> Authorization key: </td>
+		          			<td valign="top"><?php esc_html_e('Authorization key: ','imagga'); ?></td>
 		          			<td><textarea name="imagga-auth" placeholder="ex: Basic YWNjX2R1bW15OmR1bW15X3NlY3JldF9jb2RlXzEyMzQ1Njc4OQ==" ><?php if(!empty($auth)) echo $auth; ?></textarea></td>
 		        			</tr>
 									<tr>
-										<td valign="top"> Confidence grade: </td>
+										<td valign="top"><?php esc_html_e('Confidence grade: ','imagga'); ?></td>
 										<td><input type="number" name="imagga-conf"  min="1" max="100" step="0.1" value="<?php if( !empty($confidence) ) echo $confidence; ?>" /></td>
 									</tr>
 									<tr>
@@ -201,6 +236,7 @@ class Imagga_Admin {
 					}
 					$curl = curl_init();
 
+
 					curl_setopt_array($curl, array(
 					  CURLOPT_URL => "http://api.imagga.com/v1/tagging?url=".$url."&version=2",
 					  CURLOPT_RETURNTRANSFER => true,
@@ -209,6 +245,9 @@ class Imagga_Admin {
 					  CURLOPT_TIMEOUT => 30,
 					  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 					  CURLOPT_CUSTOMREQUEST => "GET",
+					  CURLOPT_HEADER => 1,
+					  CURLOPT_RETURNTRANSFER => 1,
+					  CURLOPT_VERBOSE => 1,
 					  CURLOPT_HTTPHEADER => array(
 					    "accept: application/json",
 					    "authorization: ". $auth
@@ -216,6 +255,28 @@ class Imagga_Admin {
 					));
 
 					$response = curl_exec($curl);
+					$header_size = curl_getinfo($curl, CURLINFO_HEADER_SIZE);
+					$body = substr($response, $header_size);
+					$header = substr($response, 0, $header_size);
+					$rows = explode("\n", $header);
+					foreach($rows as $row => $data){
+						$row_data = explode(':', $data);
+						if($row_data[0]=="Monthly-Limit"){
+							$limit = intval( $row_data[1] );
+						}
+						if($row_data[0]=="Monthly-Limit-Remaining"){
+							$remaining = intval( $row_data[1] );
+						}
+					}
+					
+					if( !empty( $limit ) ){
+						update_option( 'imagga_limit', $limit );
+					}
+
+					if( !empty( $remaining ) ){
+						update_option( 'imagga_remaining', $remaining );
+					}
+
 					$err = curl_error($curl);
 
 					curl_close($curl);
@@ -224,7 +285,8 @@ class Imagga_Admin {
 						add_filter( 'redirect_post_location', array( $this, 'imagga_curl_error' ), 99 );
 						return new WP_Error( 'curl_error',  sprintf( __('cURL Error #:%s', 'imagga'), $err ) );
 					} else {
-						$resp = json_decode( $response, true );
+
+						$resp = json_decode( $body, true );
 
 						if( !empty( $resp['status'] ) &&  $resp['status'] == 'error' ){
 							add_filter( 'redirect_post_location', array( $this, 'imagga_auth_err' ), 99 );
@@ -232,6 +294,7 @@ class Imagga_Admin {
 							add_filter( 'redirect_post_location', array( $this, 'imagga_url_err' ), 99 );
 						} else {
 							$tags = array();
+							
 						  foreach($resp['results'][0]['tags'] as $tag_obj){
 								if($tag_obj['confidence'] > 30){
 									array_push($tags, $tag_obj['tag']);
