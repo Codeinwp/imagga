@@ -53,3 +53,30 @@
   cursor: pointer;
   margin-top: 10px;
 }
+
+span.tagging-color {
+    display: block;
+    width: 45px;
+    height: 3px;
+    background-color: #39d6b7;
+    margin-bottom: 30px;
+}
+
+
+p.usage {
+    font-size: 36px;
+    font-weight: 200;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+p.api-info {
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 0px;
+}
+
+p.api-info span {
+    font-weight: 400;
+}
