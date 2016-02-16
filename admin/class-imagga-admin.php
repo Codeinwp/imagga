@@ -129,6 +129,7 @@ class Imagga_Admin {
 									$response = curl_exec($curl);
 									$header_size = curl_getinfo($curl, CURLINFO_HEADER_SIZE);
 									$header = substr($response, 0, $header_size);
+									$body = substr($response, $header_size);
 									$rows = explode("\n", $header);
 									foreach($rows as $row => $data){
 										$row_data = explode(':', $data);
@@ -155,10 +156,13 @@ class Imagga_Admin {
 									if ($err) {
 									  echo "cURL Error #:" . $err;
 									} else {
-										$resp = json_decode( $response, true );
+										$resp = json_decode( $body, true );
+
 										if( !empty( $resp['status'] ) &&  $resp['status'] == 'error' ){
 											echo '<div class="response_box imagga_error">'.$resp['message'].'</div>';
 											update_option( 'imagga-auth', '' );
+											update_option( 'imagga_remaining', 0);
+											update_option( 'imagga_limit', 0 );
 										} else {
 											echo '<div class="response_box"> All right, you\'re all set. Enjoy!</div>';
 											update_option( 'imagga-auth', $auth );
