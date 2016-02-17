@@ -1,6 +1,5 @@
 === Imagga Auto Tagging ===
-Contributors: ThemeIsle
-Donate link: Themeisle
+Contributors: themeisle, codeinwp
 Tags: tag, tags, auto tag, image,  auto tagging, generator, automatic, picture
 Requires at least: 3.0
 Tested up to: 4.4
