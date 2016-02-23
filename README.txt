@@ -6,13 +6,12 @@ Tested up to: 4.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Imagga Auto Tagging is a tool that an API to generate tags to posts based on the thumbnail image.
+Imagga Auto Tagging is a plugin that automatically adds tags to your posts based on their featured images.
 
 == Description ==
 
-Let's say you have a photograpy blog. Here comes the big hassle...
-These images come without any structured meta-data, so you can't really take advantage of them. All you can do is manually add tags to each post using expensive human labor and effort.
-Using Imagga Auto Tagging, you can assign relevant tags to all these posts in an automated fashion! Your post thumbnail is parsed through our Auto-Tagging API, we analyze it and add the tags that should be associated with. 
+The plugin checks the images you upload and adds relevant tags to the posts, so you won't have to add them manually. Each featured image is analyzed and receives tags that can be associated with it.
+The tags are generated through our Auto-Tagging API and all you have to do is to sign up to Imagga.com and enter the provided key in your dashboard. 
 
 == Installation ==
 
