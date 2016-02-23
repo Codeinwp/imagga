@@ -16,7 +16,7 @@
  * Plugin Name:       Imagga Auto Tagging
  * Plugin URI:        http://www.themeisle.com
  * Description:       Imagga Auto Tagging is a plugin that generate tags to posts based on the post thumbnail.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Themeisle
  * Author URI:        http://www.themeisle.com
  * License:           GPL-2.0+
