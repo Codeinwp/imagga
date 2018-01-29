@@ -32,6 +32,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 define( 'IMAGGA_URL', plugin_dir_url( __FILE__ ) );
 define( 'IMAGGA_PATH', plugin_dir_path( __FILE__ ) );
+define( 'IMAGGA_ADMIN_PATH', plugin_dir_path( __FILE__ )  . 'admin/' );
 
 /**
  * The code that runs during plugin activation.

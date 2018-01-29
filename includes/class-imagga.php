@@ -155,7 +155,17 @@ class Imagga {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'imagga_dashboard_menu', 999 );
-		$this->loader->add_action( 'publish_post', $plugin_admin, 'imagga_post_published_notification', 10 , 2 );
+
+		$selected_post_types = get_option('imagga-post-types','post');
+		if( !empty($selected_post_types)) {
+			$selected_post_types = json_decode( $selected_post_types, true );
+			if( !empty($selected_post_types)){
+				foreach ( $selected_post_types as $post_type){
+					$this->loader->add_action( 'publish_'.$post_type, $plugin_admin, 'imagga_post_published_notification', 10 , 2 );
+				}
+			}
+		}
+
 		$this->loader->add_action( 'admin_notices', $plugin_admin, 'imagga_admin_notices' );
 
 	}
