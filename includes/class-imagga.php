@@ -166,7 +166,8 @@ class Imagga {
 			}
 		}
 
-		$this->loader->add_action( 'admin_notices', $plugin_admin, 'imagga_admin_notices' );
+		$this->loader->add_action( 'admin_notices', $plugin_admin, 'imagga_notice_success' );
+		$this->loader->add_action( 'admin_notices', $plugin_admin, 'imagga_notice_error' );
 
 	}
 
