@@ -337,7 +337,7 @@ class Imagga_Admin {
             <div class="error">
 				<?php
 				if( $_GET['notice'] == 'url') { ?>
-                    <p><?php esc_html_e( 'Imagga could not get image tags because your thumbnail url is not valid.', 'imagga' ); ?></p>
+                    <p><?php esc_html_e( 'Imagga could not get image tags because your thumbnail url is not accessible outside your local environment. As soon as your website is online, we will be able to get tags for your images.', 'imagga' ); ?></p>
 					<?php
 				}
 
