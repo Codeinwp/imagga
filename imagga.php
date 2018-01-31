@@ -27,7 +27,7 @@
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
-	die;
+	die();
 }
 
 define( 'IMAGGA_URL', plugin_dir_url( __FILE__ ) );
