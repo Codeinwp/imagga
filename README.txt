@@ -21,7 +21,7 @@ Activating Imagga Auto Tagging plugin is just like any other plugin. If you've u
 2. In the Search field type "imagga auto tagging"
 3. Under "Imagga Auto Tagging," click the **Install Now** link
 4. Once the process is complete, click the **Activate Plugin** link
-5. Now, you're able to add contact forms but, first, we could configure a few settings. These can be found at **Imagga**
+5. Now, you're able to add contact forms but, first, we could configure a few settings. These can be found at **Settings -> Imagga**
 6. Add your authorization key.
 7. Click Submit.
 
