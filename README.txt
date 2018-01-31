@@ -31,3 +31,5 @@ All done. All you have to do now is adding a post thumbnail and publish that pos
 
 1. Screenshot 1. How dashboard look
 2. Screenshot 2. Generated tags for a thumbnail
+
+Note: Imagga Auto Tagging requires to upload your photo to Imagga servers in order to generate tags for it. All uploaded files remain available for 24 hours. After this period they are being automatically deleted.
