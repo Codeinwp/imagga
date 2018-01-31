@@ -343,7 +343,7 @@ class Imagga_Admin {
 	    $this->get_response();
         if ( $this->last_response && !$this->last_response->is_error() && !$this->last_response->is_empty() ) {
             // do display success
-            echo '<div class="updated notice notice-success">'. $this->last_response->to_array()['message'].'</div>' ;
+            echo '<div class="updated notice notice-success"><p>'. $this->last_response->to_array()['message'].'</p></div>' ;
             $this->set_response(new Imagga_Response('empty'));
         }
 
