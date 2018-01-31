@@ -1,0 +1,87 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Imagga\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-01-31 10:20+0200\n"
+"PO-Revision-Date: 2018-01-31 10:20+0200\n"
+"Last-Translator: Cristian <cristian@themeisle.com>\n"
+"Language-Team: Themeisle <friends@themeisle.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e;esc_html__;esc_html_e\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: admin\n"
+"X-Poedit-SearchPath-1: includes\n"
+"X-Poedit-SearchPath-2: public\n"
+
+#: admin/class-imagga-admin.php:117
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: admin/class-imagga-admin.php:129
+msgid "Imagga Auto Tagging is a tool used to generate tags to posts based on the thumbnail image."
+msgstr ""
+
+#: admin/class-imagga-admin.php:133
+#, php-format
+msgid "All you have to do to begin using it is to %s and enter below the authorization key that will be generated after you create your account."
+msgstr ""
+
+#: admin/class-imagga-admin.php:134
+msgid "Sign Up"
+msgstr ""
+
+#: admin/class-imagga-admin.php:156
+msgid "Monthly"
+msgstr ""
+
+#: admin/class-imagga-admin.php:157
+msgid "USAGE / LIMIT"
+msgstr ""
+
+#: admin/class-imagga-admin.php:169
+msgid "Authorization key: "
+msgstr ""
+
+#: admin/class-imagga-admin.php:175
+msgid "Confidence grade: "
+msgstr ""
+
+#: admin/class-imagga-admin.php:200
+msgid "Post types:"
+msgstr ""
+
+#: admin/class-imagga-admin.php:203
+msgid "post"
+msgstr ""
+
+#: admin/class-imagga-admin.php:204
+msgid "page"
+msgstr ""
+
+#: admin/class-imagga-admin.php:224
+#, php-format
+msgid "This plugin is proudly powered by %s"
+msgstr ""
+
+#: admin/class-imagga-admin.php:225
+msgid "Themeisle"
+msgstr ""
+
+#: admin/class-imagga-admin.php:312
+msgid "Tags were added. Check the tags metabox and see if they are correct!"
+msgstr ""
+
+#: admin/api-handler/class/class-imagga-api.php:163
+msgid "POST is missing"
+msgstr ""
+
+#: admin/api-handler/class/class-imagga-api.php:170
+msgid "All fields are required!"
+msgstr ""
+
+#: admin/api-handler/class/class-imagga-api.php:259
+msgid "All right, you're all set. Enjoy!"
+msgstr ""
+
